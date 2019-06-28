@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,7 +19,6 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity save(@RequestBody Customer customer){
-
         Customer savedCustomer = customerRepository.save(customer);
 
         return ResponseEntity.ok(savedCustomer);
@@ -26,7 +26,6 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity getUser(@PathVariable(name = "id") long id){
-
         Customer customer = customerRepository.findOne(id);
 
        if (customer != null) {
@@ -35,6 +34,13 @@ public class CustomerController {
        }
 
        return ResponseEntity.notFound().build();
-
     }
+
+    @GetMapping
+    public ResponseEntity list(){
+        List<Customer> customers = customerRepository.findAll();
+        return customers.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(customers);
+    }
+
+
 }
