@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping(value = "customers")
+
 public class CustomerController {
 
-
+/*
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -23,6 +22,7 @@ public class CustomerController {
 
         return ResponseEntity.ok(savedCustomer);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity getUser(@PathVariable(name = "id") long id){
@@ -36,11 +36,7 @@ public class CustomerController {
        return ResponseEntity.notFound().build();
     }
 
-    @GetMapping
-    public ResponseEntity list(){
-        List<Customer> customers = customerRepository.findAll();
-        return customers.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(customers);
-    }
+*/
 
 
 }
